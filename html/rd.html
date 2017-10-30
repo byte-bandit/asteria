@@ -1,0 +1,15 @@
+<div class="basic card" data-bind="visible: $root.researchUnlocked">
+    <div class="header">R &amp; D</div>
+    <h2 data-bind="text: rp"></h2>
+    <div class="button card" data-bind="visible: $component.manualStimulationUnlocked, click: $component.stimulate">
+        <h4 data-bind="Manual brain stimulation"></h4>
+        <div class="description">Manually stimulate the neural network.</div>
+    </div>
+    <div data-bind="foreach: $component.projects">
+        <div class="button card" data-bind="css: {disabled: !$component.canAfford(price)}, visible: !purchased() && condition(), click: $component.purchaseUpgrade">
+            <h4 data-bind="text: name"></h4>
+            <div data-bind="text: 'Innovation level: ' + price()" class="price"></div>
+            <div class="description" data-bind="text: desc"></div>
+        </div>
+    </div>
+</div>

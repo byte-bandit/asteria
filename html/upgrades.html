@@ -1,0 +1,10 @@
+<div class="basic card" data-bind="visible: $root.upgradesUnlocked">
+    <div class="header">Operations</div>
+    <div data-bind="foreach: $component.upgrades">
+        <div class="button card" data-bind="css: {disabled: !$root.canAfford(price)}, visible: !purchased() && condition(), click: $component.purchaseUpgrade">
+            <h4 data-bind="text: name"></h4>
+            <div data-bind="text: price() + ' Gold'" class="price"></div>
+            <div class="description" data-bind="text: desc"></div>
+        </div>
+    </div>
+</div>

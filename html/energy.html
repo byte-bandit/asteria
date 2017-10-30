@@ -1,0 +1,40 @@
+<div class="basic card" data-bind="visible: $root.energyUnlocked, css: {error: balance() < 0}">
+    <div class="header">Energy management</div>
+    <table>
+        <tr>
+            <td>Current drain</td>
+            <td data-bind="text: currentDrain() + ' kWh'"></td>
+        </tr>
+        <tr>
+            <td>Solar efficency</td>
+            <td data-bind="text: solarArraySunInfluence[solarArraySunPosition()] * 100 + ' %'"></td>
+        </tr>
+        <tr>
+            <td>Total production</td>
+            <td data-bind="text: production() + ' kWh'"></td>
+        </tr>
+        <tr>
+            <td>Total consumption</td>
+            <td data-bind="text: consumption() + ' kWh'"></td>
+        </tr>
+        <tr>
+            <td>Energy balance</td>
+            <td data-bind="text: balance() + ' kWh'"></td>
+        </tr>
+    </table>
+    <div class="button card" data-bind="click: buildSolarArray, css: {disabled: !$root.canAfford(solarArrayPrice)}">
+        <div data-bind="text: 'Solar Arrays: ' + solarArrays()" class="header"></div>
+        <div data-bind="text: solarArrayPrice() + ' Gold'" class="price"></div>
+        <div data-bind="text: 'Produces ' + solarArrayOutput() + ' kWh'" class="description"></div>
+    </div>
+    <div class="button card" data-bind="click: buildNuclearBattery, visible: nuclearBatteriesUnlocked, css: {disabled: !$root.canAfford(nuclearBatteryPrice)}">
+        <div data-bind="text: 'Nuclear Batteries: ' + nuclearBatteries()" class="header"></div>
+        <div data-bind="text: nuclearBatteryPrice() + ' Gold'" class="price"></div>
+        <div data-bind="text: 'Produces ' + nuclearBatteryOutput() + ' kWh'" class="description"></div>
+    </div>
+    <div class="button card" data-bind="click: buildFusionReactor, visible: fusionReactorsUnlocked, css: {disabled: !$root.canAfford(fusionReactorPrice)}" ">
+        <div data-bind="text: 'Fusion reactors: ' + fusionReactors() " class="header "></div>
+        <div data-bind="text: fusionReactorPrice() + ' Gold' " class="price "></div>
+        <div data-bind="text: 'Produces ' + fusionReactorOutput() + ' kWh' " class="description "></div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="basic card" data-bind="visible: $root.economyUnlocked">
+    <div class="header">Economy</div>
+    <table>
+        <tr>
+            <td>Total gold</td>
+            <td data-bind="text: $root.totalGold"></td>
+        </tr>
+        <tr>
+            <td>Gold per second</td>
+            <td data-bind="text: $root.gps"></td>
+        </tr>
+        <tr>
+            <td>Manual efficiency</td>
+            <td data-bind="text: $root.manualEfficency"></td>
+        </tr>
+        <tr>
+            <td>Miner efficiency</td>
+            <td data-bind="text: $root.minerEfficency"></td>
+        </tr>
+    </table>
+</div>
+<div class="basic card" data-bind="visible: $root.goldUnlocked">
+    <div class="header">Gold</div>
+    <h2 data-bind="text: $root.gold"></h2>
+    <div class="button card" data-bind="click: mineGoldCommand">
+        <h4>Mine</h4>
+        <div class="description">Manually mine 1 gold ore.</div>
+    </div>
+</div>
+<div class="basic card" data-bind="visible: $root.minersUnlocked">
+    <div class="header">Miners</div>
+    <h2 data-bind="text: $root.miners().length"></h2>
+    <div class="button card" data-bind="click: recruitMinerCommand, css: { disabled: !$root.canAfford(minerCost) }">
+        <h4>Recruit miner</h4>
+        <div data-bind="text: minerCost() + ' Gold | ' + minerCostKw() + 'kWh'" class="price"></div>
+        <div class="description">Gibe description.</div>
+    </div>
+</div>
