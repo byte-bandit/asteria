@@ -37,6 +37,14 @@ ul li:before {
     /* any design */
 }
 
+a:link {
+    color: var(--color-main);
+}
+
+a:visited {
+    color: var(--color-main);
+}
+
 .container {
     display: flex;
     flex-flow: row;
