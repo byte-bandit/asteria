@@ -14,7 +14,7 @@ requirejs.config({
     }
 });
 
-define(['knockout', 'terminal', 'energy', 'economy', 'lam', 'jumpdrive', 'rd'], function(ko, terminal, energy, economy, lam, jumpdrive, rd) {
+define(['knockout', 'terminal', 'energy', 'economy', 'lam', 'jumpdrive', 'rd', 'upgrades'], function(ko, terminal, energy, economy, lam, jumpdrive, rd, upgrades) {
 
     MainViewModel.gold = ko.observable(0);
     MainViewModel.totalGold = ko.observable(0);
@@ -65,6 +65,7 @@ define(['knockout', 'terminal', 'energy', 'economy', 'lam', 'jumpdrive', 'rd'], 
     MainViewModel.LAM = new lam();
     MainViewModel.Jumpdrive = new jumpdrive();
     MainViewModel.Research = new rd();
+    MainViewModel.Upgrades = new upgrades();
 
     ko.components.register('research', {
         viewModel: {
@@ -76,7 +77,11 @@ define(['knockout', 'terminal', 'energy', 'economy', 'lam', 'jumpdrive', 'rd'], 
     });
 
     ko.components.register('upgrades', {
-        viewModel: { require: 'upgrades.js' },
+        viewModel: {
+            createViewModel: function(params, componentInfo) {
+                return MainViewModel.Upgrades;
+            }
+        },
         template: { require: 'text!view/upgrades.html' }
     });
 
@@ -127,5 +132,5 @@ define(['knockout', 'terminal', 'energy', 'economy', 'lam', 'jumpdrive', 'rd'], 
 
     ko.applyBindings(MainViewModel);
 
-    require(['bootsequence'], boot => boot(true));
+    require(['bootsequence'], boot => boot(false));
 });

@@ -91,17 +91,17 @@ define(['knockout'], function(ko) {
         }, {
             purchased: ko.observable(false),
             name: '1GW Laser',
-            desc: 'Manual mining is 100 times more effective.',
+            desc: 'Manual mining is four times more effective.',
             condition: ko.computed(function() { return MainViewModel.totalGold() > 10000; }),
             price: () => 100000,
-            effect: function() { MainViewModel.manualEfficency(MainViewModel.manualEfficency() * 10) }
+            effect: function() { MainViewModel.manualEfficency(MainViewModel.manualEfficency() * 4) }
         }, {
             purchased: ko.observable(false),
             name: '2.21GW Laser',
             desc: 'What the hell is a Gigawatt anyway?',
             condition: ko.computed(function() { return MainViewModel.totalGold() > 100000; }),
             price: () => 1000000,
-            effect: function() { MainViewModel.manualEfficency(MainViewModel.manualEfficency() * 10) }
+            effect: function() { MainViewModel.manualEfficency(MainViewModel.manualEfficency() * 2) }
         }, {
             purchased: ko.observable(false),
             name: 'Sun trackers',
@@ -124,17 +124,17 @@ define(['knockout'], function(ko) {
             price: () => 100000,
             effect: function() { MainViewModel.Energy.fusionReactorsUnlocked(true); }
         }];
-    }
 
-    MainViewModel.totalGold.subscribe(function(newValue) {
-        if (newValue > 20) {
-            MainViewModel.unlockComponent(MainViewModel.upgradesUnlocked);
-            MainViewModel.Terminal.info(`RAW MEMORY EXTRACTED TO DATABASE DUMP.`)
-            MainViewModel.Terminal.info(`PARSING DATABASE DUMP...`);
-            MainViewModel.Terminal.info(`UPGRADES: [AVAIL]`);
-            this.dispose();
-        }
-    });
+        MainViewModel.totalGold.subscribe(function(newValue) {
+            if (newValue > 20) {
+                MainViewModel.unlockComponent(MainViewModel.upgradesUnlocked);
+                MainViewModel.Terminal.info(`RAW MEMORY EXTRACTED TO DATABASE DUMP.`)
+                MainViewModel.Terminal.info(`PARSING DATABASE DUMP...`);
+                MainViewModel.Terminal.info(`OPERATIONS: [AVAIL]`);
+                this.dispose();
+            }
+        });
+    }
 
     return ResearchWidgetViewModel;
 });

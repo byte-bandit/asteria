@@ -32,7 +32,7 @@ ul {
 }
 
 ul li:before {
-    content: 'i214@ip3:~$ ';
+    content: 'm01412@asteria.if.p03:~$ ';
     margin: 0 .25em;
     /* any design */
 }
@@ -101,7 +101,7 @@ a:visited {
 }
 
 .button:hover:not(.disabled) {
-    box-shadow: inset 64px 0 0 0 #31302B;
+    /* box-shadow: inset 64px 0 0 0 #31302B; */
     color: #FFF;
 }
 
